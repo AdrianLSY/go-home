@@ -1,6 +1,6 @@
 import googlemaps
-from utilities import Utilities
-from exceptions import Api_error, Geocode_exception, Reverse_geocode_exception, API_request_exception, No_route_found_exception, Pair_request_exception, None_value_exception
+from .utilities import Utilities
+from .exceptions import Api_error, Geocode_exception, Reverse_geocode_exception, API_request_exception, No_route_found_exception, Pair_request_exception
 
 class G_maps_client:
 
@@ -35,7 +35,7 @@ class G_maps_client:
         except Reverse_geocode_exception as e:
             print(f"Error: {e}")
 
-    def route_adresses(self, origin:str, destination:str) -> tuple(int, int):
+    def route_adresses(self, origin:str, destination:str) -> tuple:
         try:
             result = self.client.distance_matrix(origin, destination)
             if result['status'] != "OK":
