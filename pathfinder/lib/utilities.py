@@ -1,5 +1,13 @@
 class Utilities:
+    """
+    A Collection of utilities and input validations for common tasks
 
+    Functions:
+        validate_instance_of(object, a_class) -> None
+        validate_nullable_instance_of(object, a_class) -> None
+        validate_latitude_and_longitude(latitude:float, longitude:float) -> None
+        is_between(number:float, start:float, end:float) -> None
+    """
     def validate_instance_of(object, a_class) -> None:
         """
         validates an instance of an object with a class
