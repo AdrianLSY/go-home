@@ -16,7 +16,7 @@ class Utilities:
         """
         if not isinstance(object, a_class):
             raise TypeError()
-    
+
     def validate_nullable_instance_of(object, a_class) -> None:
         """
         validates an instance of an object with a class
@@ -36,7 +36,7 @@ class Utilities:
             return
         else:
             Utilities.validate_instance_of(object, a_class)
-    
+
     def validate_latitude_and_longitude(latitude:float, longitude:float) -> None:
         """
         validates latitude and longitudes values to be a float/int and within specified ranges
@@ -53,7 +53,7 @@ class Utilities:
         """
         Utilities.is_between(latitude, -90, 90)
         Utilities.is_between(longitude, -180, 180)
-    
+
     def is_between(number:float, start:float, end:float) -> None:
         """
         Checks if the given number is between a start and end value.
