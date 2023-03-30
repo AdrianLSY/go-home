@@ -1,8 +1,8 @@
 import unittest
-from .utilities_test import *
+from .utility_test import *
 
 runner = unittest.TextTestRunner()
 
-utulities_test = unittest.TestLoader().loadTestsFromTestCase(Utilities_test)
+utulities_test = unittest.TestLoader().loadTestsFromTestCase(Utility_test)
 
 runner.run(utulities_test)
