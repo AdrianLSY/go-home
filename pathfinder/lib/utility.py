@@ -1,4 +1,4 @@
-class Utilities:
+class Utility:
     """
     A Collection of utilities and input validations for common tasks
 
@@ -43,7 +43,7 @@ class Utilities:
         if object is None:
             return
         else:
-            Utilities.validate_instance_of(object, a_class)
+            Utility.validate_instance_of(object, a_class)
 
     def validate_latitude_and_longitude(latitude:float, longitude:float) -> None:
         """
@@ -59,8 +59,8 @@ class Utilities:
         Raises:
         ValueError: if latitude/longitude is not a valid geographic coordinate
         """
-        Utilities.is_between(latitude, -90, 90)
-        Utilities.is_between(longitude, -180, 180)
+        Utility.is_between(latitude, -90, 90)
+        Utility.is_between(longitude, -180, 180)
 
     def is_between(number:float, start:float, end:float) -> None:
         """
@@ -77,9 +77,9 @@ class Utilities:
         Raises:
         ValueError: If number is not between start and end values or start value is greater than the end value
         """
-        Utilities.validate_instance_of(number, (float, int))
-        Utilities.validate_instance_of(start, (float, int))
-        Utilities.validate_instance_of(end, (float, int))
+        Utility.validate_instance_of(number, (float, int))
+        Utility.validate_instance_of(start, (float, int))
+        Utility.validate_instance_of(end, (float, int))
 
         if start > end:
             raise ValueError("Start value cannot be greater than end value")

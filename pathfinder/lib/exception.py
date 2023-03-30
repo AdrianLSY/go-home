@@ -14,9 +14,3 @@ class Geocode_exception(Exception):
 
 class Reverse_geocode_exception(Exception):
     pass
-
-class Invalid_latitude_exception(Exception):
-    pass
-
-class Invalid_longitude_exception(Exception):
-    pass

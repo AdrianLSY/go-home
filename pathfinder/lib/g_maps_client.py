@@ -1,11 +1,11 @@
 import googlemaps
-from .utilities import Utilities
-from .exceptions import Api_error, Geocode_exception, Reverse_geocode_exception, API_request_exception, No_route_found_exception, Pair_request_exception
+from .utility import Utility
+from .exception import Api_error, Geocode_exception, Reverse_geocode_exception, API_request_exception, No_route_found_exception, Pair_request_exception
 
 class G_maps_client:
 
     def __init__(self, api_key:str) -> None:
-        Utilities.validate_instance_of(api_key, str)
+        Utility.validate_instance_of(api_key, str)
         try:
              # establish conenction with the Google Maps API
             self.client = googlemaps.Client(key=api_key)
