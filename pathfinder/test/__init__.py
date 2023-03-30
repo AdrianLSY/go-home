@@ -1,8 +1,12 @@
 import unittest
+
+tests = []
+
 from .utility_test import *
+tests.append(unittest.TestLoader().loadTestsFromTestCase(Utility_test))
+
+from .location_test import *
+tests.append(unittest.TestLoader().loadTestsFromTestCase(Location_test))
 
 runner = unittest.TextTestRunner()
-
-utulities_test = unittest.TestLoader().loadTestsFromTestCase(Utility_test)
-
-runner.run(utulities_test)
+[runner.run(test) for test in tests]

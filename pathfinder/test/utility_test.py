@@ -30,6 +30,24 @@ class Utility_test(unittest.TestCase):
         with self.assertRaises(TypeError): Utility.validate_latitude_and_longitude("a", "b")
         with self.assertRaises(TypeError): Utility.validate_latitude_and_longitude(1, "b")
         with self.assertRaises(TypeError): Utility.validate_latitude_and_longitude("a", 1)
+
+    def test_validate_nullable_latitude_and_longitude(self):
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude("a", "b")
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude(1, "b")
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude("a", 1)
+        self.assertIsNone(Utility.validate_nullable_latitude_and_longitude(-90, -180))
+        self.assertIsNone(Utility.validate_nullable_latitude_and_longitude(90, 180))
+        self.assertIsNone(Utility.validate_nullable_latitude_and_longitude(5.12, 65.23))
+        with self.assertRaises(ValueError): Utility.validate_nullable_latitude_and_longitude(-91, -181)
+        with self.assertRaises(ValueError): Utility.validate_nullable_latitude_and_longitude(91.231, 181.456)
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude("a", "b")
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude(1, "b")
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude("a", 1)
+        self.assertIsNone(Utility.validate_nullable_latitude_and_longitude(None, None))
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude(None, 1)
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude(1, None)
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude(None, "a")
+        with self.assertRaises(TypeError): Utility.validate_nullable_latitude_and_longitude("a", None)
     
     def test_is_between(self):
         self.assertIsNone(Utility.is_between(50, 1, 100))
