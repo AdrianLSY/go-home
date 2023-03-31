@@ -18,7 +18,7 @@ class Location:
     """
     def __init__(self, address:str = None, latitude:float = None, longitude:float = None) -> None:
         """
-        Constructor for the Location class.
+        Initializes the Location object that represents a specific geographic location.
 
         Args:
             address (str): The address of the location.
@@ -26,7 +26,7 @@ class Location:
             longitude (float): The longitude of the location.
 
         Raises:
-            TypeError: If the address is not a string, if latitude or longitude is not an int or float
+            TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
             ValueError: if latitude/longitude is not a valid geographic coordinate
         """
         Utility.validate_nullable_instance_of(address, str)

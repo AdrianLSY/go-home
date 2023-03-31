@@ -21,6 +21,10 @@ class Path():
             end_address (str): End address of the path.
             end_latitude (float): End latitude of the path.
             end_longitude (float): End longitude of the path.
+
+        Raises:
+            TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
+            ValueError: If latitude/longitude is not a valid geographic coordinate
         """
         self.__start_location = Location(start_address, start_latitude, start_longitude)
         self.__end_location = Location(end_address, end_latitude, end_longitude)
@@ -34,18 +38,18 @@ class Path():
             Location: Start location of the path.
         """
         return self.__start_location
-    
+
     @start_location.setter
     def start_location(self, location: Location) -> None:
         """
         Sets the start location of the path.
-    
+
         Parameters:
             location (Location): New start location.
-        
+
         Returns:
             None
-    
+
         Raises:
             TypeError: If the location is not an instance of Location.
         """
@@ -58,7 +62,7 @@ class Path():
         Gets the end location of the path.
 
         Returns:
-            Location: Etart location of the path.
+            Location: End location of the path.
         """
         return self.__end_location
     
@@ -66,13 +70,13 @@ class Path():
     def end_location(self, location: Location) -> None:
         """
         Sets the end location of the path.
-    
+
         Parameters:
             location (Location): New end location.
         
         Returns:
             None
-    
+
         Raises:
             TypeError: If the location is not an instance of Location.
         """
@@ -84,6 +88,21 @@ class Walk(Path):
     A class representing a path for a person walking.
     """
     def __init__(self, start_address:str = None, start_latitude:float = None, start_longitude:float = None, end_address:str = None, end_latitude:float = None, end_longitude:float = None) -> None:
+        """
+        Initializes the Walk object and it's superclass Path object with start and end locations.
+
+        Parameters:
+            start_address (str): Start address of the path.
+            start_latitude (float): Start latitude of the path.
+            start_longitude (float): Start longitude of the path.
+            end_address (str): End address of the path.
+            end_latitude (float): End latitude of the path.
+            end_longitude (float): End longitude of the path.
+
+        Raises:
+            TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
+            ValueError: If latitude/longitude is not a valid geographic coordinate
+        """
         super().__init__(start_address, start_latitude, start_longitude, end_address, end_latitude, end_longitude)
 
 
@@ -92,6 +111,21 @@ class Passenger(Path):
     A class representing a path for a person riding as a passenger in a Driver's car.
     """
     def __init__(self, start_address:str = None, start_latitude:float = None, start_longitude:float = None, end_address:str = None, end_latitude:float = None, end_longitude:float = None) -> None:
+        """
+        Initializes the Passenger object and it's superclass Path object with start and end locations.
+
+        Parameters:
+            start_address (str): Start address of the path.
+            start_latitude (float): Start latitude of the path.
+            start_longitude (float): Start longitude of the path.
+            end_address (str): End address of the path.
+            end_latitude (float): End latitude of the path.
+            end_longitude (float): End longitude of the path.
+
+        Raises:
+            TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
+            ValueError: If latitude/longitude is not a valid geographic coordinate
+        """
         super().__init__(start_address, start_latitude, start_longitude, end_address, end_latitude, end_longitude)
 
 
@@ -100,6 +134,22 @@ class Driver(Path):
     A class representing a path for a person driving while having passengers in their car.
     """
     def __init__(self, start_address:str = None, start_latitude:float = None, start_longitude:float = None, end_address:str = None, end_latitude:float = None, end_longitude:float = None, car_capacity:int = 0) -> None:
+        """
+        Initializes the Driver object and it's superclass Path object with start and end locations.
+
+        Parameters:
+            start_address (str): Start address of the path.
+            start_latitude (float): Start latitude of the path.
+            start_longitude (float): Start longitude of the path.
+            end_address (str): End address of the path.
+            end_latitude (float): End latitude of the path.
+            end_longitude (float): End longitude of the path.
+            car_capacity (int): The amount of passenger the Driver's car can accomodate
+
+        Raises:
+            TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None; if car capacity is not an int
+            ValueError: If latitude/longitude is not a valid geographic coordinate; if 
+        """
         super().__init__(start_address, start_latitude, start_longitude, end_address, end_latitude, end_longitude)
         Utility.validate_instance_of(car_capacity, int)
         self.__car_capacity = car_capacity
@@ -120,11 +170,11 @@ class Driver(Path):
         Args:
             car_capacity (int): The capacity of the car.
 
-        Raises:
-            TypeError: If car_capacity is not an integer.
-
         Returns:
             None
+
+        Raises:
+            TypeError: If car_capacity is not an integer.
         """
         Utility.validate_instance_of(car_capacity, int)
         self.__car_capacity = car_capacity

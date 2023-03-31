@@ -22,7 +22,10 @@ class Utility:
         Raises:
             TypeError: If the object is not an instance of a_class
         """
-        if not isinstance(object, a_class):
+        if not isinstance(a_class, tuple):
+            a_class = (a_class,)
+            
+        if not type(object) in a_class:
             raise TypeError()
 
     def validate_nullable_instance_of(object, a_class) -> None:
@@ -107,3 +110,53 @@ class Utility:
             raise ValueError("Start value cannot be greater than end value")
         if not start <= number <= end:
             raise ValueError("Number is not in range of start and end")
+    
+    def check_bigger(number:float, threshold:float) -> None:
+        """
+        Checks if the given number is bigger than a given threshold.
+
+        Args:
+            number (float or int): The number to be checked.
+            threshold (float or int): The reference number to compare against.
+
+        Returns:
+            None: If the number is bigger than the threshold.
+
+        Raises:
+            ValueError: If the number is not bigger than the threshold.
+            TypeError: If either number or threshold is not a float or int.
+        """
+        Utility.validate_instance_of(number, (int, float))
+        Utility.validate_instance_of(threshold, (int, float))
+
+        if number > threshold:
+            return None
+        else:
+            raise ValueError(f"{number} is not bigger than {threshold}")
+
+
+    def check_smaller(number, threshold):
+        """
+        Checks if the given number is smaller than a given threshold.
+
+        Args:
+            number (float or int): The number to be checked.
+            threshold (float or int): The reference number to compare against.
+
+        Returns:
+            None: If the number is smaller than the threshold.
+
+        Raises:
+            ValueError: If the number is not smaller than the threshold.
+            TypeError: If either number or threshold is not a float or int.
+        """
+        Utility.validate_instance_of(number, (int, float))
+        Utility.validate_instance_of(threshold, (int, float))
+
+        if number < threshold:
+            return None
+        else:
+            raise ValueError(f"{number} is not smaller than {threshold}")
+
+if __name__ == "__main__":
+    Utility.validate_instance_of(None, (None, int, float))
