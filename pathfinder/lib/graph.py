@@ -15,7 +15,7 @@ class Person:
         self.role = role
 
 
-class Path:
+class Route:
     def __init__(self, origin:Person, destination:Person, distance:int = None, duration:int = None):
         Utility.validate_instance_of(origin, Person)
         Utility.validate_instance_of(destination, Person)

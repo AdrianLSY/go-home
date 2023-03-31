@@ -21,16 +21,16 @@ class Location_test(unittest.TestCase):
     
     def test_getters_and_setters(self):
         location = Location()
-        self.assertIsNone(location.get_address())
-        self.assertIsNone(location.get_latitude())
-        self.assertIsNone(location.get_longitude())
-        with self.assertRaises(TypeError): location.set_address(1)
-        with self.assertRaises(TypeError): location.set_address(1.01)
-        with self.assertRaises(TypeError): location.set_address(Location())
-        self.assertIsNone(location.set_address("Brisbane"))
-        self.assertEqual(location.get_address(), "Brisbane")
-        self.assertIsNone(location.set_address("Sydney"))
-        self.assertEqual(location.get_address(), "Sydney")
+        self.assertIsNone(location.address)
+        self.assertIsNone(location.latitude)
+        self.assertIsNone(location.longitude)
+        with self.assertRaises(TypeError): location.address = 1
+        with self.assertRaises(TypeError): location.address = 1.01
+        with self.assertRaises(TypeError): location.address = Location()
+        location.address = "Brisbane"
+        self.assertEqual(location.address, "Brisbane")
+        location.address = "Sydney"
+        self.assertEqual(location.address, "Sydney")
         with self.assertRaises(ValueError): location.set_coordinates(-91, -181)
         with self.assertRaises(ValueError): location.set_coordinates(91.231, 181.456)
         with self.assertRaises(TypeError): location.set_coordinates("a", "b")
@@ -42,9 +42,9 @@ class Location_test(unittest.TestCase):
         with self.assertRaises(TypeError): location.set_coordinates(None, "b")
         with self.assertRaises(TypeError): location.set_coordinates("a", None)
         self.assertIsNone(location.set_coordinates(27.4705, 153.0260))
-        self.assertEqual(location.get_latitude(), 27.4705)
-        self.assertEqual(location.get_longitude(), 153.0260)
+        self.assertEqual(location.latitude, 27.4705)
+        self.assertEqual(location.longitude, 153.0260)
         self.assertIsNone(location.set_coordinates(33.8688, 151.2093))
-        self.assertEqual(location.get_latitude(), 33.8688)
-        self.assertEqual(location.get_longitude(), 151.2093)
+        self.assertEqual(location.latitude, 33.8688)
+        self.assertEqual(location.longitude, 151.2093)
         

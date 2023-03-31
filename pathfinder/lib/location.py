@@ -35,17 +35,8 @@ class Location:
         self.__latitude = None if latitude is None else float(latitude)
         self.__longitude = None if longitude is None else float(longitude)
     
-    def set_address(self, address:str) -> None:
-        """
-        Setter method for the address attribute.
-
-        Args:
-            address (str): The new address for the location.
-        """
-        Utility.validate_instance_of(address, str)
-        self.__address = address
-    
-    def get_address(self) -> str:
+    @property
+    def address(self) -> str:
         """
         Getter method for the address attribute.
 
@@ -54,6 +45,37 @@ class Location:
         """
         return self.__address
 
+    @address.setter
+    def address(self, address:str) -> None:
+        """
+        Setter method for the address attribute.
+
+        Args:
+            address (str): The new address for the location.
+        """
+        Utility.validate_instance_of(address, str)
+        self.__address = address
+
+    @property
+    def latitude(self) -> float:
+        """
+        Getter method for the latitude attribute.
+
+        Returns:
+            float: The latitude of the location.
+        """
+        return self.__latitude
+
+    @property
+    def longitude(self) -> float:
+        """
+        Getter method for the longitude attribute.
+
+        Returns:
+            float: The longitude of the location.
+        """
+        return self.__longitude
+    
     def set_coordinates(self, latitude:float, longitude:float) -> None:
         """
         Setter method for the latitude and longitude attributes.
@@ -65,21 +87,3 @@ class Location:
         Utility.validate_latitude_and_longitude(latitude, longitude)
         self.__latitude = float(latitude)
         self.__longitude = float(longitude)
-
-    def get_latitude(self) -> float:
-        """
-        Getter method for the latitude attribute.
-
-        Returns:
-            float: The latitude of the location.
-        """
-        return self.__latitude
-
-    def get_longitude(self) -> float:
-        """
-        Getter method for the longitude attribute.
-
-        Returns:
-            float: The longitude of the location.
-        """
-        return self.__longitude
