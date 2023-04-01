@@ -41,22 +41,25 @@ class TestPath(unittest.TestCase):
             Path("123 Main St", 12.34, -181, "456 High St", 34.56, -78.90)
         
         # Test partial input
-        self.assertIsNone(Path(None, 12.34, -45.67, "456 High St", 34.56, -78.90))
+        self.assertIsInstance(Path(None, 12.34, -45.67, "456 High St", 34.56, -78.90), Path)
 
         with self.assertRaises(TypeError):
             Path("123 Main St", None, -45.67, "456 High St", 34.56, -78.90)
 
         with self.assertRaises(TypeError):
             Path("123 Main St", 12.34, None, "456 High St", 34.56, -78.90)
+        
+        self.assertIsInstance(Path("123 Main St", None, None, "456 High St", 34.56, -78.90), Path)
 
-        self.assertIsNone(Path("123 Main St", 12.34, -45.67, None, 34.56, -78.90))
+        self.assertIsInstance(Path("123 Main St", 12.34, -45.67, None, 34.56, -78.90), Path)
 
         with self.assertRaises(TypeError):
             Path("123 Main St", 12.34, -45.67, "456 High St", None, -78.90)
 
         with self.assertRaises(TypeError):
             Path("123 Main St", 12.34, -45.67, "456 High St", 34.56, None)
-
+        
+        self.assertIsInstance(Path("123 Main St", 12.34, -45.67, "456 High St", None, None), Path)
 
     def test_start_location_setter(self):
         path = Path()
@@ -85,6 +88,3 @@ class TestPath(unittest.TestCase):
         # Test invalid input
         with self.assertRaises(TypeError):
             path.end_location = "Invalid input"
-
-if __name__ == '__main__':
-    unittest.main()
