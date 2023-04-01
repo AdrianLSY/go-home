@@ -10,4 +10,8 @@ for directory in [directory for directory in os.listdir(os.path.dirname(os.path.
     tests.addTests(unittest.TestLoader().discover(f"{os.path.dirname(os.path.abspath(__file__))}/{directory}"))
 
 # Run all tests in the collected TestSuite
+os.system('cls' if os.name == 'nt' else 'clear')
+print("Running test suites")
+print("----------------------------------------------------------------------\n")
 unittest.TextTestRunner(verbosity=2).run(tests)
+print("----------------------------------------------------------------------")
