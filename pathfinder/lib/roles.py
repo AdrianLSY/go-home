@@ -181,6 +181,19 @@ class Driver(Path):
 
 
 class Roles(Enum):
+    """
+    An enumeration representing different roles for users in a transportation system, each role associated with a specific Path subclass.
+
+    The Roles enumeration contains three possible roles, each role is associated with a specific subclass of the Path class:
+        - walk: A role representing a user who is walking. Associated with the Walk class.
+        - driver: A role representing a user who is driving a car. Associated with the Driver class.
+        - passenger: A role representing a user who is a passenger in a car. Associated with the Passenger class.
+
+    Attributes:
+        walk (Walk): An instance of the Walk class, representing a user walking along a specific path.
+        driver (Driver): An instance of the Driver class, representing a user driving a car along a specific path.
+        passenger (Passenger): An instance of the Passenger class, representing a user as a passenger in a car along a specific path.
+    """
     walk = Walk()
     driver = Driver()
     passenger = Passenger()

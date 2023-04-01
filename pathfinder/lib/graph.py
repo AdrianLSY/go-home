@@ -1,4 +1,3 @@
-from enum import Enum
 from .utility import Utility
 from .location import Location
 from .roles import Roles
