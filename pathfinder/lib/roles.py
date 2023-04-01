@@ -83,6 +83,7 @@ class Path():
         Utility.validate_instance_of(location, Location)
         self.__end_location = location
 
+
 class Walk(Path):
     """
     A class representing a path for a person walking.

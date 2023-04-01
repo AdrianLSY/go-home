@@ -1,5 +1,3 @@
-from googlemaps.exceptions import ApiError as Api_error
-
 class API_request_exception(Exception):
     pass
 

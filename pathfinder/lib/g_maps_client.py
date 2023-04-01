@@ -1,6 +1,6 @@
 import googlemaps
 from .utility import Utility
-from .exception import Api_error, Geocode_exception, Reverse_geocode_exception, API_request_exception, No_route_found_exception, Pair_request_exception
+from .exception import Geocode_exception, Reverse_geocode_exception, API_request_exception, No_route_found_exception, Pair_request_exception
 
 class G_maps_client:
     """
@@ -26,15 +26,9 @@ class G_maps_client:
 
         """
         Utility.validate_instance_of(api_key, str)
-        try:
-            # establish conenction with the Google Maps API
-            self.__client = googlemaps.Client(key=api_key)
-        except Api_error as e:
-            if e.status_code == 403:
-                print("The API key is invalid or has exceeded its quota.")
-            else:
-                print("There was an error with the Google Maps API.")
-    
+        # establish conenction with the Google Maps API
+        self.__client = googlemaps.Client(key=api_key)
+
     def geocode_address(self, address):
         """
         Geocodes the given address and returns its corresponding latitude and longitude values.
@@ -50,7 +44,7 @@ class G_maps_client:
 
         """
         try:
-            result = self.client.geocode(address)
+            result = self.__client.geocode(address)
             if not result:
                 raise Geocode_exception(f"No results found for address: {address}")
             else:
@@ -74,7 +68,7 @@ class G_maps_client:
 
         """
         try:
-            result = self.client.reverse_geocode((latitude, longitude))
+            result = self.__client.reverse_geocode((latitude, longitude))
             if not result:
                 raise Reverse_geocode_exception(f"No results found for coordinates: ({latitude}, {longitude})")
             else:
@@ -100,7 +94,7 @@ class G_maps_client:
 
         """
         try:
-            result = self.client.distance_matrix(origin, destination)
+            result = self.__client.distance_matrix(origin, destination)
             if result['status'] != "OK":
                 raise API_request_exception(f"API request failed with status: {result['status']}")
 
