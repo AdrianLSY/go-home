@@ -1,7 +1,7 @@
 import unittest
 from lib.utility import Utility
 
-class TestCheckSmaller(unittest.TestCase):
+class Test_check_smaller(unittest.TestCase):
 
     def test_valid_input(self):
         Utility.check_smaller(5, 10)  # Should not raise an exception
