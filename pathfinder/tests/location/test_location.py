@@ -17,20 +17,37 @@ class Test_location(unittest.TestCase):
         self.assertIsNone(loc2.longitude)
 
         # Test partial input
-        loc3 = Location("123 Main St", None, -45.67)
-        self.assertEqual(loc3.address, "123 Main St")
-        self.assertIsNone(loc3.latitude)
+
+        loc3 = Location(None, 12.34, -45.67)
+        self.assertIsNone(loc3.address)
+        self.assertEqual(loc3.latitude, 12.34)
         self.assertEqual(loc3.longitude, -45.67)
 
-        loc4 = Location("123 Main St", 12.34, None)
-        self.assertEqual(loc4.address, "123 Main St")
-        self.assertEqual(loc4.latitude, 12.34)
-        self.assertIsNone(loc4.longitude)
+        loc3 = Location("123 Main St", None, None)
+        self.assertEqual(loc.address, "123 Main St")
+        self.assertEqual(loc3.latitude, None)
+        self.assertEqual(loc3.longitude, None)
 
-        loc5 = Location(None, 12.34, -45.67)
-        self.assertIsNone(loc5.address)
-        self.assertEqual(loc5.latitude, 12.34)
-        self.assertEqual(loc5.longitude, -45.67)
+        # Test incomplete latitude and longitude
+        with self.assertRaises(TypeError):
+            loc4 = Location(None, None, -78.90)
+
+        with self.assertRaises(TypeError):
+            loc4 = Location(None, 34.56, None)
+
+        # Test invalid input types
+        with self.assertRaises(TypeError):
+            loc4 = Location(None, "34.56", -78.90)
+
+        with self.assertRaises(TypeError):
+            loc4 = Location(None, 34.56, "-78.90")
+
+        # Test invalid coordinates
+        with self.assertRaises(ValueError):
+            loc4 = Location(None, 91, -78.90)
+
+        with self.assertRaises(ValueError):
+            loc4 = Location(None, 34.56, -181)
 
         # Test invalid input types
         with self.assertRaises(TypeError):

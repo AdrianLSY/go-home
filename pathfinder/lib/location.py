@@ -56,7 +56,7 @@ class Location:
         Raises:
             TypeError: If address is not a string
         """
-        Utility.validate_instance_of(address, str)
+        Utility.validate_nullable_instance_of(address, str)
         self.__address = address
 
     @property
@@ -91,6 +91,6 @@ class Location:
             ValueError: If latitude/longitude is not a valid geographic coordinate
             TypeError: If either latitude or longitude is not an int or float
         """
-        Utility.validate_latitude_and_longitude(latitude, longitude)
-        self.__latitude = float(latitude)
-        self.__longitude = float(longitude)
+        Utility.validate_nullable_latitude_and_longitude(latitude, longitude)
+        self.__latitude = None if latitude is None else float(latitude)
+        self.__longitude = None if longitude is None else float(longitude)
