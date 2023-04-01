@@ -52,6 +52,9 @@ class Location:
 
         Args:
             address (str): The new address for the location.
+        
+        Raises:
+            TypeError: If address is not a string
         """
         Utility.validate_instance_of(address, str)
         self.__address = address
@@ -83,6 +86,10 @@ class Location:
         Args:
             latitude (float): The new latitude for the location.
             longitude (float): The new longitude for the location.
+        
+        Raises:
+            ValueError: If latitude/longitude is not a valid geographic coordinate
+            TypeError: If either latitude or longitude is not an int or float
         """
         Utility.validate_latitude_and_longitude(latitude, longitude)
         self.__latitude = float(latitude)
