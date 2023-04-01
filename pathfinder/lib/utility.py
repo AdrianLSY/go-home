@@ -10,17 +10,17 @@ class Utility:
     """
     def validate_instance_of(object, a_class) -> None:
         """
-        Validates an instance of an object with a class
+        Validates if an object is a direct instance of a_class or any class in a tuple of classes
 
         Parameters:
             object (any): An instance of a class.
-            a_class (any): A class to check against.
+            a_class (any): A class or a tuple of classes to check against.
 
         Returns:
-            None: If object is an instance of a_class
+            None: If the object is a direct instance of a_class or any class in a tuple of classes
 
         Raises:
-            TypeError: If the object is not an instance of a_class
+            TypeError: If the object is not a direct instance of a_class or any class in a tuple of classes
         """
         if not isinstance(a_class, tuple):
             a_class = (a_class,)
@@ -157,6 +157,3 @@ class Utility:
             return None
         else:
             raise ValueError(f"{number} is not smaller than {threshold}")
-
-if __name__ == "__main__":
-    Utility.validate_instance_of(None, (None, int, float))
