@@ -70,6 +70,3 @@ class Test_route(unittest.TestCase):
 
         self.assertIsNone(self.route1.distance)
         self.assertIsNone(self.route1.duration)
-
-if __name__ == '__main__':
-    unittest.main()
