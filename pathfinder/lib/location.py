@@ -21,9 +21,9 @@ class Location:
         Initializes the Location object that represents a specific geographic location.
 
         Args:
-            address (str): The address of the location.
-            latitude (float): The latitude of the location.
-            longitude (float): The longitude of the location.
+            address (str, optional): The address of the location.
+            latitude (float, optional): The latitude of the location.
+            longitude (float, optional): The longitude of the location.
 
         Raises:
             TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
