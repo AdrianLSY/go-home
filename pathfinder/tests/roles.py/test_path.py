@@ -75,6 +75,10 @@ class TestPath(unittest.TestCase):
         with self.assertRaises(TypeError):
             path.start_location = "Invalid input"
 
+        # Test None input
+        path.start_location = None
+        self.assertEqual(path.start_location, None)
+
     def test_end_location_setter(self):
         path = Path()
 
@@ -88,3 +92,7 @@ class TestPath(unittest.TestCase):
         # Test invalid input
         with self.assertRaises(TypeError):
             path.end_location = "Invalid input"
+
+        # Test None input
+        path.start_location = None
+        self.assertEqual(path.start_location, None)
