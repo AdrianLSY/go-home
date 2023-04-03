@@ -188,7 +188,7 @@ class Route:
         Raises:
             TypeError: If distance is not an int or float
         """
-        Utility.validate_nullable_instance_of(distance, (float, float))
+        Utility.validate_nullable_instance_of(distance, (int, float))
         self.__distance = None if distance is None else float(distance)
 
     @property
@@ -212,5 +212,5 @@ class Route:
         Raises:
             TypeError: If duration is not an int or float
         """
-        Utility.validate_nullable_instance_of(duration, (float, float))
+        Utility.validate_nullable_instance_of(duration, (int, float))
         self.__duration = None if duration is None else float(duration)
