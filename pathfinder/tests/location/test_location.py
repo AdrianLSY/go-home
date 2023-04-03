@@ -17,7 +17,6 @@ class Test_location(unittest.TestCase):
         self.assertIsNone(loc2.longitude)
 
         # Test partial input
-
         loc3 = Location(None, 12.34, -45.67)
         self.assertIsNone(loc3.address)
         self.assertEqual(loc3.latitude, 12.34)
