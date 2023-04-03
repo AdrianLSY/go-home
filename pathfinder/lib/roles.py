@@ -15,12 +15,12 @@ class Path():
         Initializes the Path object with start and end locations.
 
         Parameters:
-            start_address (str): Start address of the path.
-            start_latitude (float): Start latitude of the path.
-            start_longitude (float): Start longitude of the path.
-            end_address (str): End address of the path.
-            end_latitude (float): End latitude of the path.
-            end_longitude (float): End longitude of the path.
+            start_address (str, optional): Start address of the path.
+            start_latitude (float, optional if longitude is None): Start latitude of the path.
+            start_longitude (float, optional if latitude is None): Start longitude of the path.
+            end_address (str, optional): End address of the path.
+            end_latitude (float, optional if longitude is None): End latitude of the path.
+            end_longitude (float, optional if latitude is None): End longitude of the path.
 
         Raises:
             TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
@@ -53,7 +53,7 @@ class Path():
         Raises:
             TypeError: If the location is not an instance of Location.
         """
-        Utility.validate_instance_of(location, Location)
+        Utility.validate_nullable_instance_of(location, Location)
         self.__start_location = location
 
     @property
@@ -80,7 +80,7 @@ class Path():
         Raises:
             TypeError: If the location is not an instance of Location.
         """
-        Utility.validate_instance_of(location, Location)
+        Utility.validate_nullable_instance_of(location, Location)
         self.__end_location = location
 
 
@@ -93,12 +93,12 @@ class Walk(Path):
         Initializes the Walk object and it's superclass Path object with start and end locations.
 
         Parameters:
-            start_address (str): Start address of the path.
-            start_latitude (float): Start latitude of the path.
-            start_longitude (float): Start longitude of the path.
-            end_address (str): End address of the path.
-            end_latitude (float): End latitude of the path.
-            end_longitude (float): End longitude of the path.
+            start_address (str, optional): Start address of the path.
+            start_latitude (float, optional if longitude is None): Start latitude of the path.
+            start_longitude (float, optional if latitude is None): Start longitude of the path.
+            end_address (str, optional): End address of the path.
+            end_latitude (float, optional if longitude is None): End latitude of the path.
+            end_longitude (float, optional if latitude is None): End longitude of the path.
 
         Raises:
             TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
@@ -116,12 +116,12 @@ class Passenger(Path):
         Initializes the Passenger object and it's superclass Path object with start and end locations.
 
         Parameters:
-            start_address (str): Start address of the path.
-            start_latitude (float): Start latitude of the path.
-            start_longitude (float): Start longitude of the path.
-            end_address (str): End address of the path.
-            end_latitude (float): End latitude of the path.
-            end_longitude (float): End longitude of the path.
+            start_address (str, optional): Start address of the path.
+            start_latitude (float, optional if longitude is None): Start latitude of the path.
+            start_longitude (float, optional if latitude is None): Start longitude of the path.
+            end_address (str, optional): End address of the path.
+            end_latitude (float, optional if longitude is None): End latitude of the path.
+            end_longitude (float, optional if latitude is None): End longitude of the path.
 
         Raises:
             TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
@@ -139,12 +139,12 @@ class Driver(Path):
         Initializes the Driver object and it's superclass Path object with start and end locations.
 
         Parameters:
-            start_address (str): Start address of the path.
-            start_latitude (float): Start latitude of the path.
-            start_longitude (float): Start longitude of the path.
-            end_address (str): End address of the path.
-            end_latitude (float): End latitude of the path.
-            end_longitude (float): End longitude of the path.
+            start_address (str, optional): Start address of the path.
+            start_latitude (float, optional if longitude is None): Start latitude of the path.
+            start_longitude (float, optional if latitude is None): Start longitude of the path.
+            end_address (str, optional): End address of the path.
+            end_latitude (float, optional if longitude is None): End latitude of the path.
+            end_longitude (float, optional if latitude is None): End longitude of the path.
             car_capacity (int): The amount of passenger the Driver's car can accomodate
 
         Raises:
