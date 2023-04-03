@@ -104,6 +104,10 @@ class Route:
         __destination (Person): The destination of the route, represented by a Person object.
         __distance (float, optional): The distance of the route.
         __duration (float, optional): The duration of the route.
+
+    Raises:
+        TypeError if name is not a string / phone is not a string / role is not a Role
+
     """
     def __init__(self, origin:Person, destination:Person, distance:float = None, duration:float = None):
         Utility.validate_instance_of(origin, Person)
