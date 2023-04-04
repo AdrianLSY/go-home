@@ -1,5 +1,6 @@
 import unittest
-from lib.graph import Person, Route
+from lib.person import Person
+from lib.route import Route
 from lib.roles import Roles
 
 class Test_route(unittest.TestCase):

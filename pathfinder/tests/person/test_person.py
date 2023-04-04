@@ -1,5 +1,5 @@
 import unittest
-from lib.graph import Person
+from lib.person import Person
 from lib.roles import Roles
 
 class TestPerson(unittest.TestCase):
