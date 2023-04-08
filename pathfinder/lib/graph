@@ -92,53 +92,53 @@ class Edge:
     Represents an edge in a graph structure, connecting two nodes with additional information about the connection.
 
     Attributes:
-        source (Node): The source node of the edge.
+        start (Node): The start node of the edge.
         destination (Node): The destination node of the edge.
         time (float): The time it takes to travel between the nodes (optional).
         distance (float): The the distance (in meters) between the nodes (optional).
     """
-    def __init__(self, source:Node, destination:Node, time:float = 0.0, distance:float = 0.0):
+    def __init__(self, start:Node, destination:Node, time:float = 0.0, distance:float = 0.0):
         """
-        Initializes an Edge object with the given source, destination, time, and distance.
+        Initializes an Edge object with the given start, destination, time, and distance.
 
         Args:
-            source (Node): The source node of the edge.
+            start (Node): The start node of the edge.
             destination (Node): The destination node of the edge.
             time (float/int, optional): The time (in minutes) it takes to travel between the nodes (optional). Defaults to 0.
             distance (float/int, optional): The the distance (in meters) between the nodes (optional). Defaults to 0.
 
         Raises:
-            TypeError: If source/destination is not a Node, time/distance is not a float/int
+            TypeError: If start/destination is not a Node, time/distance is not a float/int
         """
-        Utility.validate_instance_of(source, Node)
+        Utility.validate_instance_of(start, Node)
         Utility.validate_instance_of(destination, Node)
         Utility.validate_instance_of(time, float)
         Utility.validate_instance_of(distance, float)
-        self.__source = source
+        self.__start = start
         self.__destination = destination
         self.__time = float(time)
         self.__distance = float(distance)
 
     @property
-    def source(self) -> Node:
+    def start(self) -> Node:
         """
-        Gets the source attribute of the edge.
+        Gets the start attribute of the edge.
 
         Returns:
-            Node: The source node of the edge.
+            Node: The start node of the edge.
         """
-        return self.__source
+        return self.__start
 
-    @source.setter
-    def source(self, source:Node) -> None:
+    @start.setter
+    def start(self, start:Node) -> None:
         """
-        Sets the source attribute of the edge.
+        Sets the start attribute of the edge.
 
         Args:
-            source (Node): The new source node of the edge.
+            start (Node): The new start node of the edge.
         """
-        Utility.validate_instance_of(source, Node)
-        self.__source = source
+        Utility.validate_instance_of(start, Node)
+        self.__start = start
 
     @property
     def destination(self) -> Node:
