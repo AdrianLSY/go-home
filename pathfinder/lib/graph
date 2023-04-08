@@ -1,0 +1,346 @@
+from .location import Location, Location_type
+from .person import Person
+from .utility import Utility
+
+class Node:
+    """
+    Represents a node in a graph structure, containing location, location type, person, and edge lists.
+    
+    Attributes:
+        location (Location): The geographic location of the node.
+        person (Person): The person associated with the node.
+        edges (Edge_list): A container for storing the node's connections to other nodes.
+    """
+    def __init__(self, location:Location, person:Person) -> None:
+        """
+        Initializes a Node object with the given location, location type, and person.
+
+        Args:
+            location (Location): The location of the node.
+            person (Person): The person associated with the node.
+
+        Raises:
+            TypeError If location is not a Location or if person is not a Person
+        """
+        Utility.validate_instance_of(location, Location)
+        Utility.validate_instance_of(person, Person)
+        self.__location = location
+        self.__person = person
+        self.__edges = Edge_list()
+
+    @property
+    def location(self) -> Location:
+        """
+        Gets the location attribute of the node.
+
+        Returns:
+            Location: The location of the node.
+        """
+        return self.__location
+
+    @location.setter
+    def location(self, location:Location) -> None:
+        """
+        Sets the location attribute of the node.
+
+        Args:
+            location (Location): The new location of the node.
+
+        Raises:
+            TypeError: If the location is not a location
+        """
+        Utility.validate_instance_of(location, Location)
+        self.__location = location
+
+    @property
+    def person(self) -> Person:
+        """
+        Gets the person attribute of the node.
+
+        Returns:
+            Person: The person of the node.
+        """
+        return self.__person
+
+    @person.setter
+    def person(self, person:Person) -> None:
+        """
+        Sets the person attribute of the node.
+        
+        Args:
+            person (Person): The new person of the node.
+
+        Raises:
+            TypeError: If person is not a Person
+        """
+        Utility.validate_instance_of(person, Person)
+        self.__person = person
+
+    @property
+    def edges(self) -> Edge_list:
+        """
+        Gets the edges attribute of the node, which is a container for storing the node's connections to other nodes.
+
+        Returns:
+            Edge_list: The edge list of the node.
+        """
+        return self.__edges
+    
+
+class Edge:
+    """
+    Represents an edge in a graph structure, connecting two nodes with additional information about the connection.
+
+    Attributes:
+        source (Node): The source node of the edge.
+        destination (Node): The destination node of the edge.
+        time (float): The time it takes to travel between the nodes (optional).
+        distance (float): The the distance (in meters) between the nodes (optional).
+    """
+    def __init__(self, source:Node, destination:Node, time:float = 0.0, distance:float = 0.0):
+        """
+        Initializes an Edge object with the given source, destination, time, and distance.
+
+        Args:
+            source (Node): The source node of the edge.
+            destination (Node): The destination node of the edge.
+            time (float/int, optional): The time (in minutes) it takes to travel between the nodes (optional). Defaults to 0.
+            distance (float/int, optional): The the distance (in meters) between the nodes (optional). Defaults to 0.
+
+        Raises:
+            TypeError: If source/destination is not a Node, time/distance is not a float/int
+        """
+        Utility.validate_instance_of(source, Node)
+        Utility.validate_instance_of(destination, Node)
+        Utility.validate_instance_of(time, float)
+        Utility.validate_instance_of(distance, float)
+        self.__source = source
+        self.__destination = destination
+        self.__time = float(time)
+        self.__distance = float(distance)
+
+    @property
+    def source(self) -> Node:
+        """
+        Gets the source attribute of the edge.
+
+        Returns:
+            Node: The source node of the edge.
+        """
+        return self.__source
+
+    @source.setter
+    def source(self, source:Node) -> None:
+        """
+        Sets the source attribute of the edge.
+
+        Args:
+            source (Node): The new source node of the edge.
+        """
+        Utility.validate_instance_of(source, Node)
+        self.__source = source
+
+    @property
+    def destination(self) -> Node:
+        """
+        Gets the destination attribute of the edge.
+
+        Returns:
+            Node: The destination node of the edge.
+        """
+        return self.__destination
+
+    @destination.setter
+    def destination(self, destination:Node) -> None:
+        """
+        Sets the destination attribute of the edge.
+
+        Args:
+            destination (Node): The new destination node of the edge.
+        """
+        Utility.validate_instance_of(destination, Node)
+        self.__destination = destination
+
+    @property
+    def time(self) -> float:
+        """
+        Gets the time attribute of the edge.
+
+        Returns:
+            float: The time between the nodes.
+        """
+        return self.__time
+
+    @time.setter
+    def time(self, time:float) -> None:
+        """
+        Sets the time attribute of the edge.
+
+        Args:
+            time (float/int): The new time between the nodes.
+        """
+        Utility.validate_instance_of(time, (int, float))
+        self.__time = float(time)
+
+    @property
+    def distance(self) -> float:
+        """
+        Gets the distance attribute of the edge.
+
+        Returns:
+            int: The distance between the nodes.
+        """
+        return self.__distance
+
+    @distance.setter
+    def distance(self, distance:float) -> None:
+        """
+        Sets the distance attribute of the edge.
+
+        Args:
+            distance (int): The new distance between the nodes.
+        """
+        Utility.validate_instance_of(distance, (int, float))
+        self.__distance = float(distance)
+
+
+class Edge_list:
+    """
+    Represents a container for managing a list of Edge objects in a graph structure.
+
+    Attributes:
+        __edges (List[Edge]): A private list containing Edge objects.
+    """
+    def __init__(self) -> None:
+        """
+        Initializes an Edge_list object with an empty list of edges.
+        """
+        self.__edges = []
+
+    def __len__(self) -> int:
+        """
+        Returns the number of edges in the Edge_list.
+
+        Returns:
+            int: The number of edges in the list.
+        """
+        return len(self.__edges)
+
+    def __getitem__(self, index) -> Edge:
+        """
+        Gets the Edge object at the given index.
+
+        Args:
+            index (int): The index of the desired edge in the list.
+
+        Returns:
+            Edge: The edge at the specified index.
+        
+        Raises:
+            TypeError: If index is not an int or slice
+            IndexError: If list index is out of range
+        """
+        return self.__edges[index]
+
+    def __setitem__(self, index, edge) -> None:
+        """
+        Sets the Edge object at the given index to the provided edge.
+
+        Args:
+            index (int): The index where the edge will be set.
+            edge (Edge): The edge to be set at the specified index.
+        Raises:
+            TypeError: If edge is not an Edge or index is not an int or slice
+            IndexError: If list index is out of range
+        """
+        Utility.validate_instance_of(edge, Edge)
+        self.__edges[index] = edge
+
+    def __delitem__(self, index) -> None:
+        """
+        Deletes the Edge object at the given index.
+
+        Args:
+            index (int): The index of the edge to be deleted.\
+        
+        Raises:
+            TypeError: If index is not an int or slice
+            IndexError: If list index is out of range
+        """
+        del self.__edges[index]
+
+    def append(self, edge) -> None:
+        """
+        Appends the given Edge object to the end of the list.
+
+        Args:
+            edge (Edge): The edge to be appended to the list.
+
+        Raises:
+            TypeError: If edge is not an Edge or index is not an int or slice
+        """
+        Utility.validate_instance_of(edge, Edge)
+        self.__edges.append(edge)
+
+    def insert(self, index, edge) -> None:
+        """
+        Inserts the given Edge object at the specified index.
+
+        Args:
+            index (int): The index where the edge will be inserted.
+            edge (Edge): The edge to be inserted at the specified index.
+
+        Raises:
+            TypeError: If edge is not an Edge or index is not an int or slice
+            IndexError: If list index is out of range
+        """
+        self.__edges.insert(index, edge)
+
+    def index(self, edge) -> int:
+        """
+        Returns the index of the first occurrence of the given edge in the list.
+
+        Args:
+            edge (Edge): The edge to find in the list.
+
+        Returns:
+            int: The index of the first occurrence of the edge in the list.
+
+        Raises:
+            TypeError: if edge is not an Edge
+        """
+        Utility.validate_instance_of(edge, Edge)
+        return self.__edges.index(edge)
+
+    def count(self, edge) -> int:
+        """
+        Returns the number of occurrences of the given edge in the list.
+
+        Args:
+            edge (Edge): The edge to count in the list.
+
+        Returns:
+            int: The number of occurrences of the edge in the list.
+
+        Raises:
+            TypeError: if edge is not an Edge
+        """
+        return self.__edges.count(edge)
+
+    def remove(self, edge) -> int:
+        """
+        Removes the first occurrence of the given edge from the list.
+
+        Args:
+            edge (Edge): The edge to be removed from the list.
+
+        Raises:
+            TypeError: if edge is not an Edge
+        """
+        self.__edges.remove(edge)
+
+    def clear(self) -> None:
+        """
+        Removes all Edge objects from the list.
+        """
+        self.__edges.clear()

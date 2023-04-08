@@ -2,7 +2,7 @@ import unittest
 from lib.person import Person
 from lib.roles import Roles
 
-class TestPerson(unittest.TestCase):
+class Test_person(unittest.TestCase):
 
     def setUp(self):
         self.person1 = Person("Alice", "555-555-1234", role=Roles.walk)

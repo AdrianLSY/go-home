@@ -1,6 +1,6 @@
 from enum import Enum
 from .utility import Utility
-from .location import Location
+from .location import Location, Location_type
 
 class Path():
     """
@@ -26,8 +26,8 @@ class Path():
             TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
             ValueError: If latitude/longitude is not a valid geographic coordinate
         """
-        self.__start_location = Location(start_address, start_latitude, start_longitude)
-        self.__end_location = Location(end_address, end_latitude, end_longitude)
+        self.__start_location = Location(start_address, start_latitude, start_longitude, Location_type.start)
+        self.__end_location = Location(end_address, end_latitude, end_longitude, Location_type.end)
 
     @property
     def start_location(self) -> Location:

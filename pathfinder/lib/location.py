@@ -1,4 +1,11 @@
+from enum import Enum
 from .utility import Utility
+
+class Location_type(Enum):
+    undefined = 0
+    start = 1
+    end = 2
+
 
 class Location:
     """
@@ -16,7 +23,7 @@ class Location:
         get_latitude(self) -> float
         get_longitude(self) -> float
     """
-    def __init__(self, address:str = None, latitude:float = None, longitude:float = None) -> None:
+    def __init__(self, address:str = None, latitude:float = None, longitude:float = None, type:Location_type = Location_type.undefined) -> None:
         """
         Initializes the Location object that represents a specific geographic location.
 
@@ -24,6 +31,7 @@ class Location:
             address (str, optional): The address of the location.
             latitude (float, optional): The latitude of the location.
             longitude (float, optional): The longitude of the location.
+            type (Location_type, optional): undefined location, start/end location of a Person
 
         Raises:
             TypeError: If the address is not a string or None; if latitude or longitude is not an int, float or None
@@ -31,9 +39,35 @@ class Location:
         """
         Utility.validate_nullable_instance_of(address, str)
         Utility.validate_nullable_latitude_and_longitude(latitude, longitude)
+        Utility.validate_instance_of(type, Location_type)
         self.__address = address
         self.__latitude = None if latitude is None else float(latitude)
         self.__longitude = None if longitude is None else float(longitude)
+        self.__type = type
+    
+    @property
+    def type(self) -> Location_type:
+        """
+        Getter method for the location type
+
+        Returns:
+            type: The type of location.
+        """
+        return self.__type
+
+    @type.setter
+    def type(self, type:Location_type) -> None:
+        """
+        Setter method for the location type attribute.
+
+        Args:
+            type (Location_type): The new type for the location.
+        
+        Raises:
+            TypeError: If type is not a Location_type
+        """
+        Utility.validate_nullable_instance_of(type, Location_type)
+        self.__type = type
     
     @property
     def address(self) -> str:
